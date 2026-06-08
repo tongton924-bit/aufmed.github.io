@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aufmed - 精研医药 · 笃护安康</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3B6F',
+                        gold: '#C8A97E',
+                        grayLight: '#E8EEF5',
+                        dark: '#2A2A2A',
+                        cyan: '#248F9E'
+                    },
+                    fontFamily: {
+                        en: ['Inter', 'sans-serif'],
+                        cn: ['"思源黑体"', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .text-shadow { text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+            .bg-gradient-blue { background: linear-gradient(135deg, #0F3B6F 0%, #1A4B85 100%); }
+            .hover-scale { transition: all 0.3s ease; }
+            .hover-scale:hover { transform: scale(1.03); }
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: "思源黑体", Inter, sans-serif; }
+        [data-lang] { display: none; }
+        [data-lang].active { display: block; }
+        .lang-select { position: relative; }
+        .lang-dropdown { position: absolute; bottom: -280px; right: 0; width: 180px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 10px 0; z-index: 999; }
+        .lang-dropdown button { width: 100%; text-align: left; padding: 8px 16px; transition: all 0.2s; }
+        .lang-dropdown button:hover { background: #E8EEF5; color: #0F3B6F; }
+    </style>
+</head>
+<body class="bg-white text-dark overflow-x-hidden">
+
+<header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <a href="#" class="flex items-center gap-2">
+                <span class="text-primary text-2xl md:text-3xl font-en font-bold">aufmed</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="zh">奥芙迈德</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="en">Aufmed</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="de">Aufmed</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="fr">Aufmed</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="ja">オフメッド</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="ko">아우프메드</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="es">Aufmed</span>
+                <span class="hidden md:inline text-gold text-sm" data-lang="ar">أوفميد</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="zh">首页</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="en">Home</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="de">Startseite</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="fr">Accueil</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="ja">ホーム</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="ko">홈</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="es">Inicio</a>
+                <a href="#home" class="text-primary font-medium hover:text-gold" data-lang="ar">الرئيسية</a>
+
+                <a href="#about" class="hover:text-gold" data-lang="zh">关于我们</a>
+                <a href="#about" class="hover:text-gold" data-lang="en">About Us</a>
+                <a href="#about" class="hover:text-gold" data-lang="de">Über Uns</a>
+                <a href="#about" class="hover:text-gold" data-lang="fr">À Propos</a>
+                <a href="#about" class="hover:text-gold" data-lang="ja">私たちについて</a>
+                <a href="#about" class="hover:text-gold" data-lang="ko">회사 소개</a>
+                <a href="#about" class="hover:text-gold" data-lang="es">Sobre Nosotros</a>
+                <a href="#about" class="hover:text-gold" data-lang="ar">معلومات عنا</a>
+
+                <a href="#product" class="hover:text-gold" data-lang="zh">产品中心</a>
+                <a href="#product" class="hover:text-gold" data-lang="en">Products</a>
+                <a href="#product" class="hover:text-gold" data-lang="de">Produkte</a>
+                <a href="#product" class="hover:text-gold" data-lang="fr">Produits</a>
+                <a href="#product" class="hover:text-gold" data-lang="ja">製品</a>
+                <a href="#product" class="hover:text-gold" data-lang="ko">제품 센터</a>
+                <a href="#product" class="hover:text-gold" data-lang="es">Productos</a>
+                <a href="#product" class="hover:text-gold" data-lang="ar">المنتجات</a>
+
+                <a href="#tech" class="hover:text-gold" data-lang="zh">科研技术</a>
+                <a href="#tech" class="hover:text-gold" data-lang="en">R&D</a>
+                <a href="#tech" class="hover:text-gold" data-lang="de">F&E</a>
+                <a href="#tech" class="hover:text-gold" data-lang="fr">R&D</a>
+                <a href="#tech" class="hover:text-gold" data-lang="ja">研究開発</a>
+                <a href="#tech" class="hover:text-gold" data-lang="ko">연구 기술</a>
+                <a href="#tech" class="hover:text-gold" data-lang="es">I+D</a>
+                <a href="#tech" class="hover:text-gold" data-lang="ar">البحث والتطوير</a>
+
+                <a href="#cooperate" class="hover:text-gold" data-lang="zh">合作渠道</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="en">Cooperation</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="de">Zusammenarbeit</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="fr">Coopération</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="ja">協力</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="ko">협력</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="es">Cooperación</a>
+                <a href="#cooperate" class="hover:text-gold" data-lang="ar">التعاون</a>
+
+                <a href="#contact" class="hover:text-gold" data-lang="zh">联系我们</a>
+                <a href="#contact" class="hover:text-gold" data-lang="en">Contact</a>
+                <a href="#contact" class="hover:text-gold" data-lang="de">Kontakt</a>
+                <a href="#contact" class="hover:text-gold" data-lang="fr">Contact</a>
+                <a href="#contact" class="hover:text-gold" data-lang="ja">お問い合わせ</a>
+                <a href="#contact" class="hover:text-gold" data-lang="ko">문의하기</a>
+                <a href="#contact" class="hover:text-gold" data-lang="es">Contacto</a>
+                <a href="#contact" class="hover:text-gold" data-lang="ar">اتصل بنا</a>
+
+                <div class="lang-select relative ml-2">
+                    <button id="langBtn" class="px-3 py-1 border rounded text-sm flex items-center gap-1">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">中文</span>
+                    </button>
+                    <div id="langDropdown" class="lang-dropdown hidden">
+                        <button data-value="zh">中文</button>
+                        <button data-value="en">English</button>
+                        <button data-value="de">Deutsch</button>
+                        <button data-value="fr">Français</button>
+                        <button data-value="ja">日本語</button>
+                        <button data-value="ko">한국어</button>
+                        <button data-value="es">Español</button>
+                        <button data-value="ar">العربية</button>
+                    </div>
+                </div>
+            </nav>
+
+            <button id="menuBtn" class="md:hidden text-dark text-xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg py-4 px-6 space-y-3">
+        <a href="#home" data-lang="zh">首页</a>
+        <a href="#about" data-lang="zh">关于我们</a>
+        <a href="#product" data-lang="zh">产品中心</a>
+        <a href="#tech" data-lang="zh">科研技术</a>
+        <a href="#cooperate" data-lang="zh">合作渠道</a>
+        <a href="#contact" data-lang="zh">联系我们</a>
+        <div class="pt-2 border-t">
+            <p class="text-xs text-gray-500 mb-1">Language</p>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="setLang('zh')" class="text-sm py-1 px-2 border rounded">中文</button>
+                <button onclick="setLang('en')" class="text-sm py-1 px-2 border rounded">English</button>
+                <button onclick="setLang('de')" class="text-sm py-1 px-2 border rounded">Deutsch</button>
+                <button onclick="setLang('fr')" class="text-sm py-1 px-2 border rounded">Français</button>
+                <button onclick="setLang('ja')" class="text-sm py-1 px-2 border rounded">日本語</button>
+                <button onclick="setLang('ko')" class="text-sm py-1 px-2 border rounded">한국어</button>
+                <button onclick="setLang('es')" class="text-sm py-1 px-2 border rounded">Español</button>
+                <button onclick="setLang('ar')" class="text-sm py-1 px-2 border rounded">العربية</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="home" class="pt-16 md:pt-20 min-h-screen flex items-center bg-gradient-blue">
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div class="text-white">
+                <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight">aufmed</h1>
+                
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="zh">精研医药 · 笃护安康</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="en">Medical Excellence · Health Protection</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="de">Medizinische Exzellenz · Gesundheitsschutz</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="fr">Excellence Médicale · Protection Santé</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="ja">医薬品の卓越・健康の保護</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="ko">의약 우수성 · 건강 보호</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="es">Excelencia Médica · Protección de Salud</p>
+                <p class="text-gold text-xl md:text-2xl mt-4" data-lang="ar">تميز طبي · حماية الصحة</p>
+
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="zh">专注医药研发、生产与全球供应链服务，依托顶尖科研团队与标准化生产体系，恪守严苛质控标准，以专业实力赋能大健康产业。</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="en">We specialize in pharmaceutical R&D, production and global supply chain services. With top R&D teams and standardized production systems, we adhere to strict quality control.</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="de">Wir sind spezialisiert auf pharmazeutische Forschung, Produktion und globale Lieferkettendienste mit strengen Qualitätskontrollen.</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="fr">Nous sommes spécialisés dans la R&D pharmaceutique, la production et la chaîne d'approvisionnement mondiale avec des contrôles de qualité stricts.</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="ja">医薬品の研究開発、生産、グローバルサプライチェーンに特化し、厳格な品質管理を実施しています。</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="ko">의약품 연구개발, 생산, 글로벌 공급망 서비스에 특화되어 있으며 엄격한 품질 관리를 준수합니다.</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="es">Nos especializamos en I+D farmacéutica, producción y cadena de suministro global con estrictos controles de calidad.</p>
+                <p class="mt-6 text-gray-200 max-w-lg leading-relaxed" data-lang="ar">نحن متخصصون في البحث والتطوير الصيدلي والإنتاج وسلسلة التوريد العالمية مع ضمانات جودة صارمة.</p>
+
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="zh">查看产品</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="en">View Products</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="de">Produkte Ansehen</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="fr">Voir Produits</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="ja">製品を見る</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="ko">제품 보기</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="es">Ver Productos</a>
+                    <a href="#product" class="bg-gold text-dark px-8 py-3 rounded hover:bg-amber-200 font-medium" data-lang="ar">عرض المنتجات</a>
+
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="zh">科研实力</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="en">R&D Strength</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="de">F&E Stärke</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="fr">Force R&D</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="ja">研究開発力</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="ko">연구 기술력</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="es">Capacidad I+D</a>
+                    <a href="#tech" class="border border-white px-8 py-3 rounded text-white hover:bg-white/10" data-lang="ar">قوة البحث والتطوير</a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="w-full h-80 bg-white/10 rounded-2xl backdrop-blur-md flex items-center justify-center">
+                    <i class="fas fa-flask text-white text-[120px] opacity-80"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-20 bg-grayLight">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="zh">关于我们</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="en">About Us</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="de">Über Uns</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="fr">À Propos</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ja">私たちについて</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ko">회사 소개</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="es">Sobre Nosotros</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ar">معلومات عنا</h2>
+            <div class="w-20 h-1 bg-gold mx-auto mt-4"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-white p-8 rounded-xl shadow-md flex justify-center">
+                <i class="fas fa-building text-primary text-6xl"></i>
+            </div>
+            <div>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="zh">品牌理念</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="en">Brand Philosophy</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="de">Markenphilosophie</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="fr">Philosophie de Marque</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="ja">ブランド理念</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="ko">브랜드 철학</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="es">Filosofía de Marca</h3>
+                <h3 class="text-xl text-primary font-semibold mb-4" data-lang="ar">فلسفة العلامة التجارية</h3>
+
+                <p class="leading-loose text-dark/80" data-lang="zh">Aufmed 源自德语“精进向上”之意，深耕医药领域多年，集研发、生产、销售、服务于一体。公司严格遵循 GMP、ISO 等国际质量体系认证，从原料甄选到成品出厂，全流程严控品质。</p>
+                <p class="leading-loose text-dark/80" data-lang="en">Aufmed originates from German meaning "continuous improvement". We have deep roots in pharmaceuticals, integrating R&D, production, sales and service. We strictly follow international certifications such as GMP and ISO.</p>
+                <p class="leading-loose text-dark/80" data-lang="de">Aufmed stammt aus dem Deutschen und bedeutet "stetige Verbesserung". Wir sind tief in der Pharmaindustrie verwurzelt und integrieren Forschung, Produktion, Vertrieb und Service.</p>
+                <p class="leading-loose text-dark/80" data-lang="fr">Aufmed vient de l'allemand signifiant "amélioration continue". Nous sommes profondément enracinés dans le secteur pharmaceutique et intégrons la R&D, la production, la vente et le service.</p>
+                <p class="leading-loose text-dark/80" data-lang="ja">Aufmedはドイツ語で「継続的な改善」を意味し、医薬品分野で長年の実績があります。研究開発、生産、販売、サービスを統合しています。</p>
+                <p class="leading-loose text-dark/80" data-lang="ko">Aufmed는 독일어로 '지속적인 개선'을 의미하며 의약품 분야에서 오랜 기간 노하우를 축적했습니다. 연구개발, 생산, 판매, 서비스를 통합합니다.</p>
+                <p class="leading-loose text-dark/80" data-lang="es">Aufmed proviene del alemán que significa "mejora continua". Estamos profundamente arraigados en el sector farmacéutico, integrando I+D, producción, venta y servicio.</p>
+                <p class="leading-loose text-dark/80" data-lang="ar">أوفميد تعني باللغة الألمانية "التحسين المستمر". لدينا خبرة طويلة في مجال الصيدلة، وندمج البحث والتطوير والإنتاج والبيع والخدمة.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="product" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="zh">产品中心</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="en">Products</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="de">Produkte</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="fr">Produits</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ja">製品</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ko">제품</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="es">Productos</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ar">المنتجات</h2>
+            <div class="w-20 h-1 bg-gold mx-auto mt-4"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-grayLight rounded-xl p-6 shadow-sm hover-scale">
+                <i class="fas fa-pills text-primary text-3xl mb-4"></i>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="zh">化学原料药</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="en">API Chemicals</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="de">Chemische Wirkstoffe</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="fr">Ingrédients Actifs</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ja">化学原薬</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ko">화학 원료 의약품</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="es">Materias Primas</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ar">المواد الكيميائية الصيدلانية</h4>
+            </div>
+            <div class="bg-grayLight rounded-xl p-6 shadow-sm hover-scale">
+                <i class="fas fa-capsules text-primary text-3xl mb-4"></i>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="zh">成品制剂</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="en">Finished Dosage</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="de">Fertige Arzneimittel</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="fr">Préparations Finies</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ja">製剤成品</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ko">완제 의약품</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="es">Preparados Finales</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ar">المستحضرات النهائية</h4>
+            </div>
+            <div class="bg-grayLight rounded-xl p-6 shadow-sm hover-scale">
+                <i class="fas fa-dna text-primary text-3xl mb-4"></i>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="zh">生物制药</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="en">Biopharma</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="de">Biopharmazeutika</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="fr">Biopharmacie</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ja">バイオ医薬品</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ko">바이오 의약품</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="es">Biofarmacéuticos</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ar">الأدوية البيولوجية</h4>
+            </div>
+            <div class="bg-grayLight rounded-xl p-6 shadow-sm hover-scale">
+                <i class="fas fa-medkit text-primary text-3xl mb-4"></i>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="zh">医用耗材</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="en">Medical Consumables</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="de">Medizinische Verbrauchsmaterialien</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="fr">Consommables Médicaux</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ja">医療消耗品</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ko">의료 소모품</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="es">Consumibles Médicos</h4>
+                <h4 class="text-lg font-semibold text-primary mb-2" data-lang="ar">المستلزمات الطبية</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="zh">联系我们</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="en">Contact Us</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="de">Kontaktiere Uns</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="fr">Contactez-Nous</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ja">お問い合わせ</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ko">문의하기</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="es">Contáctenos</h2>
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] text-primary font-bold" data-lang="ar">اتصل بنا</h2>
+            <div class="w-20 h-1 bg-gold mx-auto mt-4"></div>
+        </div>
+        <div class="max-w-xl mx-auto bg-grayLight p-8 rounded-xl">
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="zh">在线留言</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="en">Message</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="de">Nachricht</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="fr">Message</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="ja">メッセージ</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="ko">메시지</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="es">Mensaje</h4>
+            <h4 class="text-lg text-primary font-semibold mb-6" data-lang="ar">رسالة</h4>
+            <form class="space-y-4">
+                <input type="text" placeholder="Name" class="w-full px-4 py-3 rounded border">
+                <input type="text" placeholder="Email / Phone" class="w-full px-4 py-3 rounded border">
+                <textarea rows="4" placeholder="Message" class="w-full px-4 py-3 rounded border"></textarea>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="zh">提交</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="en">Submit</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="de">Senden</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="fr">Envoyer</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="ja">送信</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="ko">제출</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="es">Enviar</button>
+                <button class="w-full bg-primary text-white py-3 rounded hover:bg-primary/90" data-lang="ar">إرسال</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 text-center text-gray-400 text-sm">
+        <div class="text-xl font-bold text-gold mb-4">aufmed</div>
+        <p data-lang="zh">© 2025 aufmed.com 版权所有</p>
+        <p data-lang="en">© 2025 aufmed.com All Rights Reserved</p>
+        <p data-lang="de">© 2025 aufmed.com Alle Rechte Vorbehalten</p>
+        <p data-lang="fr">© 2025 aufmed.com Tous Droits Réservés</p>
+        <p data-lang="ja">© 2025 aufmed.com 全著作権所有</p>
+        <p data-lang="ko">© 2025 aufmed.com 판권 소유</p>
+        <p data-lang="es">© 2025 aufmed.com Todos los Derechos Reservados</p>
+        <p data-lang="ar">© 2025 aufmed.com جميع الحقوق محفوظة</p>
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        langList: ['zh','en','de','fr','ja','ko','es','ar'],
+        langNames: {zh:'中文',en:'English',de:'Deutsch',fr:'Français',ja:'日本語',ko:'한국어',es:'Español',ar:'العربية'}
+    };
+
+    function setLang(lang) {
+        localStorage.setItem('siteLang', lang);
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => el.classList.add('active'));
+        document.getElementById('currentLang').innerText = translations.langNames[lang];
+        document.getElementById('langDropdown').classList.add('hidden');
+    }
+
+    const savedLang = localStorage.getItem('siteLang') || 'zh';
+    setLang(savedLang);
+
+    document.getElementById('langBtn').onclick = () => {
+        document.getElementById('langDropdown').classList.toggle('hidden');
+    };
+
+    document.querySelectorAll('#langDropdown button').forEach(btn => {
+        btn.onclick = () => setLang(btn.dataset.value);
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+</script>
+</body>
+</html>
